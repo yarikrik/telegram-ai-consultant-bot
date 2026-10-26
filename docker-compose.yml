@@ -1,0 +1,10 @@
+services:
+  bot:
+    build: .
+    container_name: ai_consultant_bot
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/app/data            # SQLite і векторний індекс
+      - ./logs:/app/logs            # bot.log і metrics.log
+      - ./knowledge:/app/knowledge  # база знань (можна оновлювати файлом через бота)
